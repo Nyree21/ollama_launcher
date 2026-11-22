@@ -1,7 +1,24 @@
 # Contributing
 
 Thanks for taking the time to help. Bug reports, fixes and translations are all
-welcome.
+welcome. By taking part you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Workflow
+
+Only the maintainer can push to `main`, so contributions go through a fork and a
+pull request:
+
+1. Fork the repository and create a topic branch (`fix/proxy-port`,
+   `feature/export-metrics`).
+2. Make the change, build it locally and run it.
+3. Open a pull request against `main`. The template asks for what changed and how
+   it was tested — a short paragraph is enough.
+4. Keep the discussion in the pull request. Squash or rebase on request; do not
+   force-push a branch that is already under review unless you are asked to.
+
+Small fixes (typos, one-line bug fixes) are fine as a pull request without an
+issue. Anything that changes behaviour, configuration or the UI is better
+discussed in an issue first, so nobody writes code that cannot be merged.
 
 ## Reporting a bug
 
