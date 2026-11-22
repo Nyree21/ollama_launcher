@@ -1,0 +1,310 @@
+/* Ollama Launcher - Qt style sheet
+ *
+ * Light card layout with a blue accent. The font family and size are set once
+ * in C++ (see i18n::applyFont), so no font-family rule appears here; declaring
+ * it in both places causes synthetic bolding and grey edges on scaled displays.
+ */
+
+/* Only the text colour is global. Setting a background on QWidget would paint
+ * every label and produce the grey "highlight" look behind the text. */
+QWidget { color: #0f172a; }
+QMainWindow, QDialog { background: #f5f7fb; }
+QWidget#centralwidget, QWidget#content { background: #f5f7fb; }
+QLabel { background: transparent; }
+
+/* Scroll containers stay transparent so no dark strip shows up on some themes. */
+QScrollArea, QScrollArea > QWidget > QWidget { background: transparent; }
+QScrollArea { border: none; }
+
+QWidget#header {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+QLabel#title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+QLabel#subtitle {
+    color: #64748b;
+    font-size: 12px;
+}
+
+QLabel#statusPill {
+    padding: 5px 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    background: #e2e8f0;
+    color: #475569;
+}
+QLabel#statusPill[running="true"] {
+    background: #dcfce7;
+    color: #15803d;
+}
+QLabel#statusPill[running="false"] {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+QFrame#card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+QLabel#cardTitle {
+    font-weight: 600;
+    color: #1e293b;
+}
+QLabel#cardHint {
+    color: #94a3b8;
+    font-size: 12px;
+}
+QLabel#metricValue {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1d4ed8;
+}
+QLabel#metricCaption {
+    color: #64748b;
+    font-size: 12px;
+}
+
+/* Small grey explanation under each settings row. */
+QLabel#fieldHelp {
+    color: #94a3b8;
+    font-size: 11px;
+}
+QLabel#groupTitle {
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 13px;
+    padding-top: 6px;
+}
+
+QPushButton {
+    background: #ffffff;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    padding: 7px 14px;
+    min-height: 18px;
+}
+QPushButton:hover { background: #f1f5f9; border-color: #94a3b8; }
+QPushButton:pressed { background: #e2e8f0; }
+QPushButton:disabled { color: #94a3b8; background: #f8fafc; border-color: #e2e8f0; }
+
+QPushButton#primaryBtn {
+    background: #2563eb;
+    color: #ffffff;
+    border: 1px solid #2563eb;
+    font-weight: 600;
+    padding: 9px 22px;
+}
+QPushButton#primaryBtn:hover { background: #1d4ed8; border-color: #1d4ed8; }
+QPushButton#primaryBtn:disabled {
+    background: #e2e8f0; border-color: #cbd5e1; color: #94a3b8;
+}
+
+QPushButton#dangerBtn {
+    background: #dc2626;
+    color: #ffffff;
+    border: 1px solid #dc2626;
+    font-weight: 600;
+    padding: 9px 22px;
+}
+QPushButton#dangerBtn:hover { background: #b91c1c; }
+QPushButton#dangerBtn:disabled {
+    background: #e2e8f0; border-color: #cbd5e1; color: #94a3b8;
+}
+
+QPushButton#secondaryBtn {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+QPushButton#secondaryBtn:hover { background: #e2e8f0; }
+
+QPushButton#followBtn {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #93c5fd;
+    padding: 6px 12px;
+}
+QPushButton#followBtn:checked { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+QPushButton#followBtn:!checked { background: #f8fafc; color: #64748b; border-color: #cbd5e1; }
+QPushButton#followBtn:hover { border-color: #60a5fa; }
+
+QLineEdit, QComboBox, QPlainTextEdit {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 6px 9px;
+    selection-background-color: #bfdbfe;
+}
+/* Spin boxes keep their native arrow buttons; extra padding would squeeze them. */
+QSpinBox {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 5px 4px 5px 9px;
+}
+QLineEdit:focus, QSpinBox:focus, QComboBox:focus, QPlainTextEdit:focus { border-color: #2563eb; }
+
+/* Native spin buttons render as small dots once the field itself is styled, so
+ * the arrows come from two tiny images shipped in the resource bundle. */
+QSpinBox::up-button, QSpinBox::down-button {
+    subcontrol-origin: border;
+    width: 18px;
+    background: transparent;
+    border-left: 1px solid #e2e8f0;
+}
+QSpinBox::up-button { subcontrol-position: top right; border-top-right-radius: 6px; }
+QSpinBox::down-button { subcontrol-position: bottom right; border-bottom-right-radius: 6px; }
+QSpinBox::up-button:hover, QSpinBox::down-button:hover { background: #f1f5f9; }
+QSpinBox::up-arrow { image: url(:/app/arrow_up.png); width: 9px; height: 6px; }
+QSpinBox::down-arrow { image: url(:/app/arrow_down.png); width: 9px; height: 6px; }
+
+/* Keep the native indicator: a styled but empty square would show no tick. */
+QCheckBox { spacing: 7px; }
+
+
+QTabWidget::pane {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #ffffff;
+    top: -1px;
+}
+QTabBar::tab {
+    background: transparent;
+    color: #64748b;
+    padding: 9px 18px;
+    border-bottom: 2px solid transparent;
+    font-weight: 600;
+}
+QTabBar::tab:selected { color: #2563eb; border-bottom-color: #2563eb; }
+QTabBar::tab:hover { color: #1e293b; }
+
+/* Tables: strong selection colour, multi-row selection is supported. */
+QTableView, QTableWidget, QTreeView {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    gridline-color: #eef2f7;
+    selection-background-color: #2563eb;
+    selection-color: #ffffff;
+}
+QTableView::item, QTableWidget::item { padding: 5px 8px; }
+QTableView::item:selected, QTableWidget::item:selected {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+/* Log list: clearly visible selection, Ctrl/Shift multi-select. */
+QListView {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 2px;
+    selection-background-color: #2563eb;
+    selection-color: #ffffff;
+    show-decoration-selected: 1;
+}
+QListView::item {
+    min-height: 20px;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+QListView::item:selected {
+    background: #2563eb;
+    color: #ffffff;
+}
+QListView::item:selected:active { background: #1d4ed8; color: #ffffff; }
+QListView::item:selected:!active { background: #93c5fd; color: #0f172a; }
+
+QHeaderView::section {
+    background: #f8fafc;
+    color: #475569;
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    border-right: 1px solid #eef2f7;
+    padding: 7px 8px;
+    font-weight: 600;
+}
+
+/* Row headers and the corner button turn black under a dark system theme
+ * unless they are coloured explicitly. */
+QHeaderView { background: #ffffff; }
+QHeaderView::section:vertical {
+    background: #f8fafc;
+    color: #64748b;
+    border: none;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #eef2f7;
+    padding: 4px 6px;
+}
+QTableCornerButton::section {
+    background: #f8fafc;
+    border: none;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Context menus, combo popups and tooltips also default to a black background
+ * under a dark system theme, which would make the dark text unreadable. */
+QMenu {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 4px;
+}
+QMenu::item {
+    padding: 7px 24px 7px 20px;
+    border-radius: 5px;
+    color: #0f172a;
+}
+QMenu::item:selected { background: #2563eb; color: #ffffff; }
+QMenu::item:disabled { color: #94a3b8; }
+QMenu::separator { height: 1px; background: #e2e8f0; margin: 4px 10px; }
+
+/* Combo boxes need an explicit drop-down, otherwise the arrow collapses into
+ * the bottom-right corner once the field border is styled. */
+QComboBox { padding-right: 26px; }
+QComboBox::drop-down {
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+    width: 22px;
+    background: transparent;
+    border-left: 1px solid #e2e8f0;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+QComboBox::drop-down:hover { background: #f1f5f9; }
+QComboBox::down-arrow { image: url(:/app/arrow_down.png); width: 9px; height: 6px; }
+
+QComboBox QAbstractItemView {
+    background: #ffffff;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    selection-background-color: #2563eb;
+    selection-color: #ffffff;
+    outline: none;
+}
+
+QToolTip {
+    background: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #334155;
+    padding: 5px 8px;
+}
+
+QStatusBar { background: #ffffff; border-top: 1px solid #e2e8f0; color: #64748b; }
+QScrollBar:vertical { background: transparent; width: 10px; }
+QScrollBar::handle:vertical { background: #cbd5e1; border-radius: 5px; min-height: 24px; }
+QScrollBar::handle:vertical:hover { background: #94a3b8; }
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; }
+QScrollBar:horizontal { background: transparent; height: 10px; }
+QScrollBar::handle:horizontal { background: #cbd5e1; border-radius: 5px; min-width: 24px; }

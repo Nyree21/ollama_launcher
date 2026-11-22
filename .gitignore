@@ -1,0 +1,31 @@
+# Build directories
+build/
+build-*/
+out/
+cmake-build-*/
+
+# Qt Creator / Visual Studio user files
+CMakeLists.txt.user
+*.user
+*.user.*
+.vs/
+.vscode/
+
+# Compiler output
+*.obj
+*.o
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.lib
+*.a
+
+# Generated at runtime next to the executable
+/ollama_launcher.ini
+logs/
+
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store

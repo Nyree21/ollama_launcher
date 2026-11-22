@@ -1,0 +1,5 @@
+// Windows resource script: embeds the application icon into the executable.
+// The icon path is filled in by CMake (see app.rc.in in the project root).
+#include <winresrc.h>
+
+IDI_ICON1 ICON "@OL_ICON_FILE@"
